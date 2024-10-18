@@ -4,6 +4,7 @@ import Buttton from "./Buttton";
 
 const PokemonItems = ({ data, loader, error }) => {
   const [hoverImage, setHoverImg] = useState(false);
+  
   if (loader) {
     return <Loading />;
   }
@@ -14,7 +15,7 @@ const PokemonItems = ({ data, loader, error }) => {
   const handleMouseEnter = () => {
     setHoverImg(!hoverImage);
   };
-  console.log(data);
+
 
   return (
     <div className=" flex flex-col text-center w-fit  justify-center items-center hover:scale-105 transition-all duration-300 ease-linear ">
