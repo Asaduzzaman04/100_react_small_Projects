@@ -4,7 +4,7 @@ const usePoke = () => {
   const [pokemonData, setPokemonData] = useState([]);
   const [error, setError] = useState();
   const [loading, setLoading] = useState(true);
-  const API = "https://pokeapi.co/api/v2/pokemon?limit=20";
+  const API = "https://pokeapi.co/api/v2/pokemon?limit=40";
 
   const fetchPokeData = async (apiKey) => {
     try {
