@@ -9,13 +9,13 @@ const Hero = () => {
   const text = "An easy way to keep track all expenses.".split("");
   const userName = useRef(null);
 
-  const { user, setUser } = useContextData();
+  const { setUser } = useContextData();
   const handleClick = useCallback((e) => {
     e.preventDefault();
     if (userName.current.value === "") return;
     setUser(userName.current.value);
   });
-  console.log(user);
+
 
   return (
     <>
@@ -47,16 +47,16 @@ const Hero = () => {
                       </h1>
                       <motion.p
                         initial={{ opacity: 0, x: 500 }}
-                        animate={{ opacity: 1, x: 0,}}
+                        animate={{ opacity: 1, x: 0 }}
                         transition={{
                           duration: 0.25,
                           delay: 0.5,
                         }}
-                        className="mt-6 text-base text-black sm:text-xl lg "
+                        className="mt-6 font-semibold text-base text-black sm:text-xl lg "
                       >
-                        Our ExpensEase helps you to predict your expenses based on
-                        your previous activity and shares how you should manage
-                        your money.
+                        Our ExpensEase helps you to predict your expenses based
+                        on your previous activity and shares how you should
+                        manage your money.
                       </motion.p>
                       <form className="mt-6  " onSubmit={handleClick}>
                         <div className="relative w-fit  mt-6">
