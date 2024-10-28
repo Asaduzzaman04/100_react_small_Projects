@@ -16,7 +16,6 @@ const Hero = () => {
     setUser(userName.current.value);
   });
 
-
   return (
     <>
       <main className="bg-light lg:h-lvh w-full">

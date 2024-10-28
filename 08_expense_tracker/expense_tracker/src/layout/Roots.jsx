@@ -2,7 +2,7 @@ import Navbar from "./../components/Navbar";
 
 import { Outlet } from "react-router-dom";
 
-import {DataProvider} from "../context/DataProvider";
+import { DataProvider } from "../context/DataProvider";
 import ExpenceContextProvider from "../context/ExpencsContext/ExpenceContextProvider";
 
 const Roots = () => {
@@ -10,12 +10,12 @@ const Roots = () => {
   return (
     <>
       <main className="">
-      <ExpenceContextProvider>
-        <DataProvider>
-          <Navbar />
-          <Outlet /> {/* outlet */}
-        </DataProvider>
-      </ExpenceContextProvider>
+        <ExpenceContextProvider>
+          <DataProvider>
+            <Navbar />
+            <Outlet /> {/* outlet */}
+          </DataProvider>
+        </ExpenceContextProvider>
       </main>
     </>
   );

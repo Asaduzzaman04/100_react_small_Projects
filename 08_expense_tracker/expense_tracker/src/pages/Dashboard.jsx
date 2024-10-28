@@ -3,27 +3,27 @@ import { useExpenceData } from "../context/ExpencsContext/ExpenseContext";
 import { useContextData } from "../context/MyData";
 import CreateBudget from "./../components/DashboardComp/CreateBudget";
 import AddExpences from "./../components/DashboardComp/AddExpences";
-
 import { motion } from "framer-motion";
-import SummaryOfExpence from './../components/DashboardComp/SummaryOfExpence';
+import SummaryOfExpence from "./../components/DashboardComp/SummaryOfExpence";
+import Balance from "./../components/DashboardComp/Balance";
 
 const Dashboard = () => {
-  const [adDate, setAddDate] = useState('');
-  const [expDate,setExpDate] = useState('');
+  const [adDate, setAddDate] = useState("");
+  const [expDate, setExpDate] = useState("");
 
   const [expence, setExpence] = useState({
     addIncome: 0,
     addExpencesmoney: 0,
     balance: 0,
+    title : "",
   });
 
   const { user } = useContextData(); // context data for username
 
-  const {  setExpenceData } = useExpenceData(); // context data for expences
+  const { setExpenceData } = useExpenceData(); // context data for expences
   useEffect(() => {
     setExpenceData(expence);
   }, [expence]);
- 
 
   return (
     <>
@@ -40,16 +40,20 @@ const Dashboard = () => {
         </section>
 
         <div className=" pt-10 flex flex-col justify-center items-center gap-5 ">
-          <section className="grid grid-cols-1 w-full lg:gap-0 gap-8  md:grid-cols-2 justify-center items-center ">
+          <section className="grid grid-cols-1 w-full lg:gap-0 gap-8  md:grid-cols-2 lg:grid-cols-3   justify-center items-center ">
             {/*  budget section */}
             <motion.section
               initial={{ x: -400 }}
               animate={{ x: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="flex justify-center items-center "
+              className="flex h-full  justify-center items-center "
             >
-              <CreateBudget setAddIncone={setExpence} adDates={{adDate, setAddDate}} />
+              <CreateBudget
+                setAddIncone={setExpence}
+                adDates={{ adDate, setAddDate }}
+              />
             </motion.section>
+
             {/* Expences section */}
             <motion.section
               initial={{ x: 400 }}
@@ -57,14 +61,27 @@ const Dashboard = () => {
               transition={{ duration: 0.5, ease: "easeOut" }}
               className="flex justify-center items-center"
             >
-              <AddExpences setAddExpences={setExpence} expDates={{expDate, setExpDate}} />
+              <AddExpences
+                setAddExpences={setExpence}
+                expDates={{ expDate, setExpDate }}
+              />
             </motion.section>
-          </section >
-           {/* summery section */}
-          <section className="flex justify-center items-center w-full ">
-            <SummaryOfExpence  time={{adDate,expDate}} />
+
+            {/* balance section */}
+            <motion.section
+              initial={{ x: 400 }}
+              animate={{ x: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="flex justify-center items-center h-full "
+            >
+              <Balance />
+            </motion.section>
           </section>
-        
+
+          {/* summery section */}
+          <section className="flex justify-center items-center w-full ">
+            <SummaryOfExpence time={{ adDate, expDate }} />
+          </section>
         </div>
       </main>
     </>
