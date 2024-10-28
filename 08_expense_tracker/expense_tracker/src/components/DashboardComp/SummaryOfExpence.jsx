@@ -1,8 +1,9 @@
 import { memo, useEffect, useState } from "react";
 import { useExpenceData } from "../../context/ExpencsContext/ExpenseContext";
+import SummaryTable from "./SummaryTable";
 
 const SummaryOfExpence = memo(({ time }) => {
-  const { adDate, expDate } = time; // get the last added date from addExpences and addIncome component
+  const { expDate } = time; // get the last added date from addExpences  component
   const [total, setTotal] = useState([]);
   const { expenceData } = useExpenceData();
   useEffect(() => {
@@ -11,10 +12,44 @@ const SummaryOfExpence = memo(({ time }) => {
     };
     handleData();
   }, [expenceData]);
-console.log(total);
+
+
   return (
     <>
-      
+      <main className="w-fit md:w-full border-2 border-[#111] rounded-md ">
+        <div className="rounded-lg ">
+          <table className="w-full  text-left rtl:text-right ">
+            <thead className="text-base text-light bg-button capitalize text-center ">
+              <tr>
+                <th scope="col" className=" px-2 py-3  md:px-6 md:py-3">
+                  expences category
+                </th>
+                <th scope="col" className=" px-2 py-3  md:px-6 md:py-3">
+                  amount
+                </th>
+                <th scope="col" className=" px-2 py-3  md:px-6 md:py-3">
+                  date
+                </th>
+                <th scope="col" className=" px-2 py-3  md:px-6 md:py-3">
+                  edit
+                </th>
+              </tr>
+            </thead>
+            <tbody className="w-full">
+              {total
+                ? total.map((item, index) => (
+                    <SummaryTable
+                      value={item}
+                      key={index}
+                      date={expDate}
+                     
+                    />
+                  ))
+                : null}
+            </tbody>
+          </table>
+        </div>
+      </main>
     </>
   );
 });

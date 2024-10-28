@@ -15,7 +15,7 @@ const Dashboard = () => {
     addIncome: 0,
     addExpencesmoney: 0,
     balance: 0,
-    title : "",
+    title: "",
   });
 
   const { user } = useContextData(); // context data for username
@@ -43,9 +43,13 @@ const Dashboard = () => {
           <section className="grid grid-cols-1 w-full lg:gap-0 gap-8  md:grid-cols-2 lg:grid-cols-3   justify-center items-center ">
             {/*  budget section */}
             <motion.section
-              initial={{ x: -400 }}
-              animate={{ x: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              initial={{ y: -500 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
+              whileHover={{
+                scale: 1.04,
+                transition: { duration: 0.2, ease: "easeOut" },
+              }}
               className="flex h-full  justify-center items-center "
             >
               <CreateBudget
@@ -56,9 +60,13 @@ const Dashboard = () => {
 
             {/* Expences section */}
             <motion.section
-              initial={{ x: 400 }}
-              animate={{ x: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              initial={{ y: -800 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.7 }}
+              whileHover={{
+                scale: 1.04,
+                transition: { duration: 0.2, ease: "easeOut" },
+              }}
               className="flex justify-center items-center"
             >
               <AddExpences
@@ -69,9 +77,13 @@ const Dashboard = () => {
 
             {/* balance section */}
             <motion.section
-              initial={{ x: 400 }}
-              animate={{ x: 0 }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              initial={{ y: -1200 }}
+              animate={{ y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 1 }}
+              whileHover={{
+                scale: 1.04,
+                transition: { duration: 0.2, ease: "easeOut" },
+              }}
               className="flex justify-center items-center h-full "
             >
               <Balance />
@@ -79,7 +91,7 @@ const Dashboard = () => {
           </section>
 
           {/* summery section */}
-          <section className="flex justify-center items-center w-full ">
+          <section className=" py-10 flex justify-center items-center px-5 md:px-20  md:w-full lg:px-28 ">
             <SummaryOfExpence time={{ adDate, expDate }} />
           </section>
         </div>
