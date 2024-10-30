@@ -19,10 +19,10 @@ const usePost = () => {
     }
   };
 
-  
   useEffect(() => {
     getPostItem();
   }, []);
+
   return [postItem, loading, error];
 };
 
