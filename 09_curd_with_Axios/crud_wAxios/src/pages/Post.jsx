@@ -2,21 +2,24 @@ import usePost from "./../hooks/usePost";
 import { motion } from "framer-motion";
 import PostData from "./../components/PostData";
 
-
-
 const Post = ({ search }) => {
-  const [postItem, loading, error,handleDelete] = usePost();
-
-  const searchValue = postItem.filter(
-    (item) => item.title.toLowerCase().includes(search.toLowerCase()) // search for post target with search value to title
+  const [postItem, loading, error, handleDelete] = usePost();
+  // search for post target with search value to title
+  const searchValue = postItem.filter((item) =>
+    item.title.toLowerCase().includes(search.toLowerCase())
   );
 
-console.log(postItem);
-
-  if (loading) return <h1>Loading...</h1>;
-  if (error) return <h1>Error</h1>;
+  if (loading)
+    return <h1 className="text-3xl font-semibold capitalize">Loading...</h1>;
+  if (error)
+    return (
+      <h1 className="text-3xl font-semibold capitalize">
+        Opps page not responding!
+      </h1>
+    );
 
   const allPostText = "all posts".split("");
+
   return (
     <>
       <section className="w-full  flex flex-col justify-center items-center">
@@ -37,7 +40,7 @@ console.log(postItem);
               })}
           </h2>
         </div>
-        {/* Postitem-SEction */}
+        {/* Postitem-Section */}
 
         <ul className="w-full  grid gap-5  px-5   py-5 md:py-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
           {searchValue &&
