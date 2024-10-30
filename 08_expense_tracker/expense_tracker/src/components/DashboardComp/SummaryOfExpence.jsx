@@ -13,6 +13,10 @@ const SummaryOfExpence = memo(({ time }) => {
     handleData();
   }, [expenceData]);
 
+  const handleDelete = (title) => {
+    const deletedExpence = total.filter((item) => item.title !== title); // the deleted expences from the list
+    setTotal(deletedExpence);
+  };
 
   return (
     <>
@@ -39,10 +43,10 @@ const SummaryOfExpence = memo(({ time }) => {
               {total
                 ? total.map((item, index) => (
                     <SummaryTable
+                      handleDelete={handleDelete}
                       value={item}
                       key={index}
                       date={expDate}
-                     
                     />
                   ))
                 : null}

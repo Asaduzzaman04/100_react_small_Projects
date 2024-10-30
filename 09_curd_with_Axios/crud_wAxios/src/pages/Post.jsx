@@ -1,27 +1,22 @@
 import usePost from "./../hooks/usePost";
 import { motion } from "framer-motion";
 import PostData from "./../components/PostData";
-import { useEffect, useState } from "react";
+
+
 
 const Post = ({ search }) => {
-  const [postItem, loading, error] = usePost();
-  const [data, setData] = useState([]); //data store all post
-  const allPostText = "all posts".split("");
-  useEffect(() => {
-    setData(postItem);
-  }, [postItem]);
+  const [postItem, loading, error,handleDelete] = usePost();
 
-  const searchValue = data.filter((item) => 
-    item.title.toLowerCase().includes(search.toLowerCase()) // search for post target with search value to title
+  const searchValue = postItem.filter(
+    (item) => item.title.toLowerCase().includes(search.toLowerCase()) // search for post target with search value to title
   );
-  const handleDelete = (event) => {
-    const deleteData = data.filter((items) => items.id !== event); // filter data for delete
-    setData(deleteData);
-  };
+
+console.log(postItem);
 
   if (loading) return <h1>Loading...</h1>;
   if (error) return <h1>Error</h1>;
 
+  const allPostText = "all posts".split("");
   return (
     <>
       <section className="w-full  flex flex-col justify-center items-center">
@@ -45,9 +40,10 @@ const Post = ({ search }) => {
         {/* Postitem-SEction */}
 
         <ul className="w-full  grid gap-5  px-5   py-5 md:py-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
-          {searchValue.map((items, idx) => (
-            <PostData handleDelete={handleDelete} key={idx} value={items} />
-          ))}
+          {searchValue &&
+            searchValue.map((items, idx) => (
+              <PostData handleDelete={handleDelete} key={idx} value={items} />
+            ))}
         </ul>
       </section>
     </>
@@ -55,3 +51,14 @@ const Post = ({ search }) => {
 };
 
 export default Post;
+
+{
+  /* here I get data using axios and its store in another state and show data using mapping but it not a good practice with axios also api.
+   *const [data, setData] = useState([]); //data store all post
+   *useEffect(() => {  setData(postItem);}, [postItem]);
+  *
+  *const handleDelete = (event) => {  const deleteData = data.filter((items) => items.id !== event);// filter the data with id which is not equal to event.target.id
+  *setData(deleteData); 
+  };
+   */
+}

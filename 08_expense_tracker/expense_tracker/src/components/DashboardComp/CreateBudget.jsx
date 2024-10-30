@@ -56,6 +56,7 @@ const CreateBudget = memo(({ setAddIncone, adDates }) => {
           className="flex flex-col w-full justify-center items-center gap-5 "
         >
           <input
+            required
             ref={addBudget}
             type="number"
             placeholder="Enter Budget"

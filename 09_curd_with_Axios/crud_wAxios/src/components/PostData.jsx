@@ -17,9 +17,11 @@ const PostData = ({ value, handleDelete }) => {
         <div className="flex  justify-center items-center gap-10">
           <Button value="edit" color="bg-green-700" />
 
-          <button onClick={() => handleDelete(value.id)}>
-            <Button value="delete" color="bg-red-700 " />
-          </button>
+          <Button
+            onClick={() => handleDelete(value.id)}
+            value="delete"
+            color="bg-red-700 "
+          />
         </div>
       </motion.li>
     </>

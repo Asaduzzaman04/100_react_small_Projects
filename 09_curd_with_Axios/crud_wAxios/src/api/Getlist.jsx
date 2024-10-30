@@ -8,3 +8,7 @@ export const getlist = () => {
   const finalData = data.get("/posts");
   return finalData;
 };
+
+export const deleteList = (id) => {
+  return data.delete(`/posts/${id}`);
+};

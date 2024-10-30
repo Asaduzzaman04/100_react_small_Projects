@@ -19,7 +19,6 @@ const AddExpences = memo(({ setAddExpences, expDates }) => {
     }));
     const currentExpenceData = new Date().toLocaleDateString();
     setExpDate(currentExpenceData);
-   
   });
 
   return (

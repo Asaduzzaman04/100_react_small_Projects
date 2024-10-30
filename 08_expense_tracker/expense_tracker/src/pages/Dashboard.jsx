@@ -92,7 +92,7 @@ const Dashboard = () => {
 
           {/* summery section */}
           <section className=" py-10 flex justify-center items-center px-5 md:px-20  md:w-full lg:px-28 ">
-            <SummaryOfExpence time={{ adDate, expDate }} />
+            <SummaryOfExpence time={{  expDate }} />
           </section>
         </div>
       </main>

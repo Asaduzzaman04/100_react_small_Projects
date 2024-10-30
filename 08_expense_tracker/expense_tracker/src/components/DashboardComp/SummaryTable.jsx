@@ -1,6 +1,7 @@
 import { MdDelete } from "react-icons/md";
 
-const SummaryTable = ({value,date,}) => {
+const SummaryTable = ({value,date,handleDelete}) => {
+    console.log(value);
 
     return (
         <>
@@ -16,7 +17,7 @@ const SummaryTable = ({value,date,}) => {
                     <span className="capitalize">{date ? date : "- "}</span>
                 </td>
                 <td className="px-1 py-2 md:px-6 md:py-4">
-                  <button className="bg-warning rounded-lg shadow-2xl active:scale-95 transition-all duration-200 ease-linear shadow-[#111] px-1 py-0.5 text-white text-3xl "><MdDelete/></button>
+                  <button onClick={() => handleDelete(value.title)} className="bg-warning rounded-lg shadow-2xl active:scale-95 transition-all duration-200 ease-linear shadow-[#111] px-1 py-0.5 text-white text-3xl "><MdDelete/></button>
                 </td>
             </tr>
            
