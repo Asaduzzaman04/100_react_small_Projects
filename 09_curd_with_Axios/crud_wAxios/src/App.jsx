@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Search from "./components/Search";
 import Post from "./pages/Post";
 
@@ -8,6 +8,7 @@ function App() {
   const [title, setTitle] = useState("");
   const [post, setPost] = useState("");
   const [userData, setUserData] = useState([]);
+  const [updateData, setUpdateData] = useState({});
 
   //get data from user
   const handleUserData = () => {
@@ -16,7 +17,13 @@ function App() {
     setTitle("");
     setPost("");
   };
-  console.log(userData);
+  const toggle = Object.keys(updateData).length === 0;
+
+  const handleUpdateData = useCallback((updateData) => {
+    setUpdateData(updateData);
+    setTitle(updateData.title);
+    setPost(updateData.body);
+  });
 
   return (
     <>
@@ -30,11 +37,12 @@ function App() {
               setPost,
               handleUserData,
               userData,
+              toggle,
             }}
             search={search}
             setSearch={setSearch}
           />
-          <Post search={search} />
+          <Post handleUpdateData={handleUpdateData} search={search} />
         </div>
       </main>
     </>

@@ -1,7 +1,7 @@
 import Button from "./Button";
 import { motion } from "framer-motion";
 
-const PostData = ({ value, handleDelete }) => {
+const PostData = ({ value, handleDelete ,handleUpdateData}) => {
   return (
     <>
       <motion.li
@@ -15,7 +15,7 @@ const PostData = ({ value, handleDelete }) => {
         <h1 className="font-semibold capitalize"> title : {value.title}</h1>
         <p className="capitalize">{value.body}</p>
         <div className="flex  justify-center items-center gap-10">
-          <Button value="edit" color="bg-green-700" />
+          <Button value="edit" onClick={() => handleUpdateData(value)} color="bg-green-700" />
 
           <Button
             onClick={() => handleDelete(value.id)}

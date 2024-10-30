@@ -1,13 +1,23 @@
 import Button from "./Button";
 
 const Search = ({ setSearch, search, userposts }) => {
-  const { title, post, setTitle, setPost, handleUserData} = userposts;
+  const {
+    title,
+    post,
+    setTitle,
+    setPost,
+    handleUserData,
+    toggle
+  } = userposts;
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
   };
 
+  const handleClick = () => {
+    handleUserData();
+    if (title === "" || post === "") return; //prevent empty input
+  };
   return (
     <>
       <section className="w-full flex justify-center items-center  py-5 ">
@@ -43,8 +53,8 @@ const Search = ({ setSearch, search, userposts }) => {
             onChange={(e) => setPost(e.target.value)}
           />
           {/* button-components */}
-          <button onClick={handleUserData} type="submit">
-            <Button value="add" color="bg-green-700 " />
+          <button onClick={handleClick} type="submit">
+              <Button value={` ${toggle ? "add" : "edit"} `} color="bg-green-700 " />
           </button>
         </form>
       </section>

@@ -2,7 +2,7 @@ import usePost from "./../hooks/usePost";
 import { motion } from "framer-motion";
 import PostData from "./../components/PostData";
 
-const Post = ({ search }) => {
+const Post = ({ search,handleUpdateData }) => {
   const [postItem, loading, error, handleDelete] = usePost();
   // search for post target with search value to title
   const searchValue = postItem.filter((item) =>
@@ -45,7 +45,7 @@ const Post = ({ search }) => {
         <ul className="w-full  grid gap-5  px-5   py-5 md:py-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
           {searchValue &&
             searchValue.map((items, idx) => (
-              <PostData handleDelete={handleDelete} key={idx} value={items} />
+              <PostData handleUpdateData={handleUpdateData} handleDelete={handleDelete} key={idx} value={items} />
             ))}
         </ul>
       </section>
