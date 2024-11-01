@@ -11,6 +11,7 @@ function App() {
   const [updateData, setUpdateData] = useState({});
 
   //get data from user
+  
   const handleUserData = () => {
     if (title === "" || post === "") return; //prevent empty input
     setUserData((prev) => [...prev, { title: title, body: post }]);
@@ -23,7 +24,8 @@ function App() {
     setUpdateData(updateData);
     setTitle(updateData.title);
     setPost(updateData.body);
-  });
+  },[]);
+
 
   return (
     <>
