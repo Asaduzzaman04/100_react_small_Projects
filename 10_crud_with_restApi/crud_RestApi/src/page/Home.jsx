@@ -1,9 +1,9 @@
-import useItemsData from "../hooks/useItemsData";
+
 import { motion } from "framer-motion";
 import ItemCard from "./../components/ui/ItemCard";
 
-const Home = ({ searchValue }) => {
-  const [apiData, apiLoading, apiError, handleDelete] = useItemsData();
+const Home = ({ searchValue, value}) => {
+  const {apiData, apiLoading, apiError, handleDelete} = value
   const heading = "read all posts".split("");
 
   const finaldata = apiData.filter((item) =>
@@ -18,7 +18,7 @@ const Home = ({ searchValue }) => {
   }
   return (
     <>
-      <section className="text-white ">
+      <section className="text-white  overflow-hidden">
         {/* heading-divition */}
 
         <h1 className="text-2xl text-center font-semibold capitalize  ">
@@ -37,11 +37,19 @@ const Home = ({ searchValue }) => {
         </h1>
 
         {/* postItem section */}
-        <div className="mt-5" >
-          <ul className=" gap-2 md:gap-4 lg:gap-5 px-2  grid justify-center  items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {finaldata
-              ? finaldata.map((item) => <ItemCard handleDelete={handleDelete}  data={item} key={item.id} />)
-              : null}
+        <div className="mt-5">
+          <ul className=" gap-2 md:gap-4 lg:gap-8 px-2  grid justify-center  items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {finaldata ? (
+              finaldata.map((item) => (
+                <ItemCard
+                  handleDelete={handleDelete}
+                  data={item}
+                  key={item.id}
+                />
+              ))
+            ) : (
+              <h1> not found any post</h1>
+            )}
           </ul>
         </div>
       </section>

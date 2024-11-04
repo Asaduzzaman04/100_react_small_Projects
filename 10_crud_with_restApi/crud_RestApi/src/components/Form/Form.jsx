@@ -1,13 +1,38 @@
+import { useState } from "react";
 import Button from "./../ui/Button";
+import { axiosPost } from "../../api/authApi";
 
 const Form = ({ value }) => {
-  const { search, setSearch } = value;
+  const { search, setSearch, setApiData, apiData } = value;
+  const [data, setData] = useState({
+    title: "",
+    body: "",
+  });
+
+  //postdata
+  const handlePostdata = async () => {
+    const response = await axiosPost(data);
+  if(response.status ===201){
+    setApiData( [...apiData, response.data])
+  }
+  
+  };
 
   //submit form
   const handleSubmit = (e) => {
     e.preventDefault();
+    handlePostdata();
     setSearch("");
+    setData({ title: "", body: "" });
   };
+//updata  data function
+  const handleInputChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    setData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  
   return (
     <>
       <form
@@ -31,8 +56,18 @@ const Form = ({ value }) => {
               type="text"
               placeholder="add title"
               className="input-class"
+              name="title"
+              value={data.title}
+              onChange={handleInputChange}
             />
-            <input type="text" placeholder="add post" className="input-class" />
+            <input
+              value={data.body}
+              onChange={handleInputChange}
+              type="text"
+              name="body"
+              placeholder="add post"
+              className="input-class"
+            />
           </div>
           {/* button section */}
           <button type="submit">

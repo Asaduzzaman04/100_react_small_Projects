@@ -3,7 +3,7 @@ import Button from "./Button";
 const ItemCard = ({ data, handleDelete }) => {
   return (
     <>
-      <li className="hover:shadow-[0_15px_50px_rgba(8,_112,_184,_0.7)] transition-all duration-200 ease-linear h-full px-2 py-3 md:px-3 md:py-4 rounded-md bg-sky-950">
+      <li className="hover:scale-105 hover:shadow-[0_15px_50px_rgba(8,_112,_184,_0.7)] transition-all duration-200 ease-linear h-full px-2 py-3 md:px-3 md:py-4 rounded-md bg-sky-950">
         <div className="flex flex-col gap-5 font-semibold ">
           <p>{data.id}</p>
           <div className="flex flex-col gap-2">

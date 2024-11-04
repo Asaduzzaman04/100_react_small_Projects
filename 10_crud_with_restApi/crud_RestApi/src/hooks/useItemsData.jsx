@@ -31,8 +31,10 @@ const useItemsData = () => {
       console.log(error);
     }
   };
+  
+  
 
-  return [apiData, apiLoading, apiError, handleDelete];
+  return [apiData, apiLoading, apiError, handleDelete,setApiData];
 };
 
 export default useItemsData;
