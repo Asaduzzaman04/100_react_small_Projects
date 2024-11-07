@@ -19,6 +19,6 @@ export const axiosPost = async (data) => {
 };
 
 //update post 
-export const axiosUpdate =  async (UPDATE) =>{
-  return api.put("/posts"/ UPDATE)
+export const axiosUpdate =  async ( id, UPDATE) =>{
+  return api.put(`posts/${id}/`, UPDATE)
 }

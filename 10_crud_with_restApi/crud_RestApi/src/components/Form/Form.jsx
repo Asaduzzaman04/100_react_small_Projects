@@ -1,38 +1,56 @@
-import { useState } from "react";
 import Button from "./../ui/Button";
-import { axiosPost } from "../../api/authApi";
+import { axiosPost, axiosUpdate } from "../../api/authApi";
 
 const Form = ({ value }) => {
-  const { search, setSearch, setApiData, apiData } = value;
-  const [data, setData] = useState({
-    title: "",
-    body: "",
-  });
+  const { search, setSearch, setApiData, apiData, data, setData } = value;
 
   //postdata
   const handlePostdata = async () => {
     const response = await axiosPost(data);
-  if(response.status ===201){
-    setApiData( [...apiData, response.data])
+    if (response.status === 201) {
+      setApiData([...apiData, response.data]);
+    }
+  };
+
+  //edit data function
+  const handleEdit = async () => {
+    const response = await axiosUpdate(data.id, data);
+  if (response.status === 200) {
+   setApiData((prev) => {
+     const updatedData = prev.map((item) => {
+       if (item.id === response.data.id) {
+         return response.data;
+       }
+       return item;
+     });
+     return updatedData;
+   })
+
+   //option two
+  // setApiData((prev) => {
+  //   return prev.map((item) => {
+  //     return item.id === response.data.id ? response.data : item
+  //   })
+  // })
   }
-  
   };
 
   //submit form
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleEdit();
     handlePostdata();
     setSearch("");
-    setData({ title: "", body: "" });
+    setData({id: undefined, title: "", body: "" });
   };
-//updata  data function
+
+  //updata  data function
   const handleInputChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setData((prev) => ({ ...prev, [name]: value }));
   };
 
-  
   return (
     <>
       <form

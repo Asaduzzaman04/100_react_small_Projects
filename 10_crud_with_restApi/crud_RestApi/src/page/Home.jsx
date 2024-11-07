@@ -1,9 +1,8 @@
-
 import { motion } from "framer-motion";
 import ItemCard from "./../components/ui/ItemCard";
 
 const Home = ({ searchValue, value}) => {
-  const {apiData, apiLoading, apiError, handleDelete} = value
+  const {apiData, apiLoading, apiError, handleDelete,handleEdit} = value
   const heading = "read all posts".split("");
 
   const finaldata = apiData.filter((item) =>
@@ -42,6 +41,7 @@ const Home = ({ searchValue, value}) => {
             {finaldata ? (
               finaldata.map((item) => (
                 <ItemCard
+                handleEdit={handleEdit}
                   handleDelete={handleDelete}
                   data={item}
                   key={item.id}
