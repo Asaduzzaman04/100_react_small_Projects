@@ -1,11 +1,5 @@
 # 100 React Small Projects
 
-Welcome to my repository of 100 small React projects! This collection showcases various aspects of React development, from simple UI elements to more complex features. Each project focuses on a specific concept to help strengthen your understanding of React.
-
-## Projects
-
-### 01. Accordion React
-- **Description**: An accordion co# 🚀 100 React Small Projects
 
 Welcome to my repository of **100 Small React Projects**! 🎉  
 This collection showcases various aspects of **React development**, from simple UI components to more complex features. Each project is designed to focus on a specific concept, helping you strengthen your understanding of React.
@@ -122,6 +116,7 @@ This collection showcases various aspects of **React development**, from simple 
 - Clone the repository: `git clone https://github.com/Asaduzzaman04/100_react_small_Projects`
 - Navigate to a specific project folder and run:
   ```bash
+  cd <projects directory>
   npm install
   npm run dev
 
